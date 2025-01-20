@@ -1,0 +1,19 @@
+services:
+  app:
+    env_file:
+      - .env
+    build: ./app
+    # command: bash -c "python manage.py runserver 0.0.0.0:${CONTAINER_PORT}"
+    # command: bash -c "uvicorn config.asgi:application --host 0.0.0.0 --port ${CONTAINER_PORT} --workers ${UWSGI_WORKERS} --timeout-keep-alive 3600 --timeout-graceful-shutdown 3600 --log-config config/uvicorn_config.json"
+
+    volumes:
+      - ./app:/app
+    ports:
+      - "127.0.0.1:${CONTAINER_PORT}:${CONTAINER_PORT}"
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4.2-alpine3.21
+    restart: unless-stopped

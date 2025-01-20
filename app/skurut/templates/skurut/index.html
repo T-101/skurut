@@ -1,0 +1,43 @@
+{% extends 'skurut/base.html' %}{% load static %}
+
+{% block title %}
+    <title>Skuru</title>
+    <meta property="og:title" content="Skurut"/>
+{% endblock %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div id="map"></div>
+
+    <template id="tram-button">
+        <div class="tram-button-container">
+            <input class="tgl tgl-skewed" type="checkbox" autocomplete="off"/>
+            <label class="tgl-btn"></label>
+        </div>
+    </template>
+
+    <div id="filter"></div>
+
+    <a href="{% url 'skurut:info' %}" title="Tietoja">
+        <!-- icon from https://tabler.io -->
+        <svg xmlns="http://www.w3.org/2000/svg" id="info-button"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/>
+            <path d="M12 9h.01"/>
+            <path d="M11 12h1v4h1"/>
+        </svg>
+    </a>
+
+    <script src="{% static 'js/skurut.js' %}"></script>
+    <script src="{% static 'js/socket.js' %}"></script>
+
+{% endblock %}

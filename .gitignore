@@ -1,0 +1,10 @@
+.idea
+.env
+
+db.sqlite3
+
+__pycache__
+*.pyc
+
+docker-compose.override.yml
+app/logs

@@ -1,0 +1,40 @@
+{% extends 'skurut/base.html' %}{% load static %}
+
+{% block title %}
+    <title>Tietoja | Skurut</title>
+    <meta property="og:title" content="Tietoja | Skurut"/>
+{% endblock %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/2.0.6/pico.min.css"
+          integrity="sha512-UXfikgakSZBii5lkvmDCRO+IYWQhTtwMOJ+3EmGEA+oA82kvbSskgw3OI16Jx1kINgF8aqOkYE+c9h4m6muONg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="grid">
+            <article>
+                <h2>Skurut</h2>
+
+                <p>
+                    Skurut ovat raitiovaunuja, jotka kulkevat Helsingissä.
+                    Täältä voit helposti katsoa skurujen sijaintia kartalla.
+                </p>
+
+                <p>Painamalla linjanappeja, voit katsoa vain haluamiasi linjoja.</p>
+
+                <p>Tämä palvelu hyödyntää <a href="https://www.hsl.fi/hsl/avoin-data">HSL:n avointa dataa.</a></p>
+
+                <a href="{% url 'skurut:landing-page' %}">&larr; Takaisin etusivulle</a>
+            </article>
+
+            <article>
+                <img src="{% static 'images/tram_512.webp' %}" alt="Raitiovaunu"/>
+            </article>
+        </div>
+
+
+    </div>
+{% endblock %}
