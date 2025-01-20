@@ -3,12 +3,12 @@
   "short_name": "Skurut",
   "icons": [
     {
-      "src": "/images/tram_192.webp",
+      "src": "/static/images/tram_192.webp",
       "sizes": "192x192",
       "type": "image/webp"
     },
     {
-      "src": "/images/tram_512.webp",
+      "src": "/static/images/tram_512.webp",
       "sizes": "512x512",
       "type": "image/webp"
     }
