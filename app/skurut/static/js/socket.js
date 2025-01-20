@@ -7,7 +7,6 @@ function connect() {
 
     socket.onopen = function (e) {
         console.log("Successfully connected to the WebSocket.")
-        reconnectCount = 0
     }
 
     socket.onclose = function (e) {
