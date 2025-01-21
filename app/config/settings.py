@@ -45,6 +45,7 @@ def show_toolbar(request):
 
 
 DEBUG_TOOLBAR_CONFIG = {
+    'RENDER_PANELS': False,
     'SHOW_TOOLBAR_CALLBACK': 'config.settings.show_toolbar',
 }
 
@@ -62,9 +63,7 @@ INSTALLED_APPS = [
     # packages
     'django_extensions',
     'django_simple_plausible',
-    'channels',
     # apps
-    'mqtt_service',
     'skurut'
 ]
 
@@ -213,14 +212,7 @@ MEDIA_ROOT = env('MEDIA_ROOT')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [env("REDIS_URL")]
-        },
-    },
-}
+
 
 PLAUSIBLE_SITES = env.str("PLAUSIBLE_SITES", default=None)
 PLAUSIBLE_SCRIPT_URL = env.str("PLAUSIBLE_SCRIPT_URL", default=None)
