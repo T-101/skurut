@@ -15,8 +15,6 @@ import environ
 
 from pathlib import Path
 
-from django.conf.global_settings import CSRF_TRUSTED_ORIGINS
-
 env = environ.Env()
 environ.Env().read_env(".env")
 
@@ -34,9 +32,7 @@ DEBUG = env.bool('DEBUG')
 TESTING = "test" in sys.argv
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-
-
-# CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
 
 
 # Display Django Debug Toolbar in docker
@@ -211,8 +207,6 @@ MEDIA_ROOT = env('MEDIA_ROOT')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
 
 PLAUSIBLE_SITES = env.str("PLAUSIBLE_SITES", default=None)
 PLAUSIBLE_SCRIPT_URL = env.str("PLAUSIBLE_SCRIPT_URL", default=None)
