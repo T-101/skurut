@@ -12,11 +12,7 @@ class LandingPageView(TemplateView):
 
     def __init__(self):
         super().__init__()
-        self.sid = None
-
-    def dispatch(self, request, *args, **kwargs):
         self.sid = uuid.uuid4().hex
-        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
