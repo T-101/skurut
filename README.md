@@ -1,6 +1,8 @@
 # Skurut
 ### Seuraa ratikoita kartalla
 - - -
+https://skuru.biss.ee
+
 Käyttää [HSL:n avointa rajapintaa](https://www.hsl.fi/hsl/avoin-data)
 sekä [OpenStreetMapin](https://www.openstreetmap.org) karttaa.
 - - -
