@@ -10,17 +10,8 @@ from skurut.clients import redis_client, REDIS_CHANNEL
 class LandingPageView(TemplateView):
     template_name = 'skurut/index.html'
 
-    def __init__(self):
-        super().__init__()
-        self.sid = uuid.uuid4().hex
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['sid'] = self.sid
-        return context
-
     def get(self, request, *args, **kwargs):
-        request.session['sid'] = self.sid
+        request.session['sid'] = uuid.uuid4().hex
         return super().get(request, *args, **kwargs)
 
 

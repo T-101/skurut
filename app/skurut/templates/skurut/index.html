@@ -40,7 +40,7 @@
     <script src="{% static 'js/skurut.js' %}"></script>
     <script src="{% static 'js/stream.js' %}"></script>
     <script>
-        connect("{% url 'skurut:events' %}" + "?sid={{ sid }}")
+        connect("{% url 'skurut:events' %}" + "?sid={{ request.session.sid }}")
     </script>
 
 {% endblock %}
