@@ -1,5 +1,7 @@
 import asyncio
 import uuid
+import os
+from datetime import datetime
 
 from django.http import StreamingHttpResponse, HttpResponse
 from django.views.generic import TemplateView
@@ -17,6 +19,16 @@ class LandingPageView(TemplateView):
 
 class InfoView(TemplateView):
     template_name = 'skurut/info.html'
+
+    @staticmethod
+    def _get_process_uptime():
+        stat = os.stat(f"/proc/1")
+        return datetime.fromtimestamp(stat.st_ctime)
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx["uptime"] = self._get_process_uptime()
+        return ctx
 
 
 def sse_view(request):
