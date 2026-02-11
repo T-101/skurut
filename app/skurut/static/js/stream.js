@@ -1,8 +1,5 @@
-let stream
-
-
 function connect(url) {
-    stream = new EventSource(url)
+    const stream = new EventSource(url)
 
     stream.addEventListener("data", function (e) {
         setData(JSON.parse(e.data))
@@ -12,18 +9,10 @@ function connect(url) {
         console.log("Successfully connected to the EventSource.")
     }
 
-    stream.onclose = function (e) {
-        console.log("EventSource connection closed unexpectedly")
-    }
-
     stream.onerror = function (err) {
         console.log("EventSource encountered an error")
-        setTimeout(() => window.location.reload(), 2000)
+        setTimeout(() => window.location.reload(), 1000)
     }
 
-    stream.kill = function () {
-        stream.onmessage = null
-        stream.onclose = null
-        stream.close()
-    }
+    return stream
 }
