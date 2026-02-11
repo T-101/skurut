@@ -35,7 +35,14 @@
                 </p>
 
                 <a href="{% url 'skurut:landing-page' %}">&larr; Takaisin etusivulle</a>
+
+                <p>
+                    <small style="font-size: 0.5em;">
+                        Uptime: {{ uptime|timesince }}
+                    </small>
+                </p>
             </article>
+
 
             <article>
                 <img src="{% static 'images/tram_512.webp' %}" alt="Raitiovaunu"/>
