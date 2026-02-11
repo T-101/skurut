@@ -18,6 +18,7 @@ function connect(url) {
 
     stream.onerror = function (err) {
         console.log("EventSource encountered an error")
+        window.location.reload()
     }
 
     stream.kill = function () {
