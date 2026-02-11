@@ -42,7 +42,8 @@
     <script src="{% static 'js/skurut.js' %}"></script>
     <script src="{% static 'js/stream.js' %}"></script>
     <script>
-        connect("{% url 'skurut:events' %}" + "?sid={{ request.session.sid }}")
+        const stream = connect("{% url 'skurut:events' %}" + "?sid={{ request.session.sid }}")
+        window.addEventListener("beforeunload", () => stream?.close())
     </script>
 
 {% endblock %}
