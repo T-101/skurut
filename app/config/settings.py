@@ -34,6 +34,8 @@ TESTING = "test" in sys.argv
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
 
+SECURE_REFERRER_POLICY = "origin"
+
 
 # Display Django Debug Toolbar in docker
 def show_toolbar(request):
