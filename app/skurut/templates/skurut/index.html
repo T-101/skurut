@@ -6,11 +6,18 @@
 {% endblock %}
 
 {% block extrahead %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
           integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
             integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/2.0.0-alpha.1/leaflet.min.css"
+          integrity="sha512-RwINvBFRNxoQv/j3NZkNLNsukXAQ6rSeh1eDG3DipDXYbQ4jnyPLUGb4MWXvw1tHLCgA+Sxkd2afJSDpLwjAEQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/2.0.0-alpha.1/leaflet-global.js"
+            integrity="sha512-alzn3J0X8owFWjWlUsg2kdX0Nm3fxN4k2qyOy7oK+lySHh4UA0IH0/OaN4EeNkGfsFYyWjUNFcRzHvNV+O1urg=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {% endblock %}
 
@@ -39,7 +46,7 @@
         </svg>
     </a>
 
-    <script src="{% static 'js/skurut.js' %}"></script>
+    <script src="{% static 'js/skurut.js' %}?{% now "U" %}"></script>
     <script src="{% static 'js/stream.js' %}"></script>
     <script>
         const stream = connect("{% url 'skurut:events' %}" + "?sid={{ request.session.sid }}")
