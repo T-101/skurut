@@ -1,12 +1,12 @@
-const map = L.map('map').setView([60.18, 24.95], 13)
+const map = new L.Map('map').setView([60.18, 24.95], 13)
 
 // Add OpenStreetMap tiles
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map)
 
 function createTramMarker(lat, lng, direction, tramLine) {
-    const icon = L.divIcon({
+    const icon = new L.DivIcon({
         className: 'tram-icon',
         html: `
                 <img src="/static/images/circle_with_caret_small.png" style="transform: rotate(${direction}deg);">
@@ -16,7 +16,7 @@ function createTramMarker(lat, lng, direction, tramLine) {
         iconAnchor: [25, 25], // Anchor at the center
     })
 
-    const marker = L.marker([lat, lng], {icon}).addTo(map)
+    const marker = new L.Marker([lat, lng], {icon}).addTo(map)
     return marker
 }
 
@@ -65,7 +65,7 @@ function updateFilters() {
 
 if (navigator.geolocation) {
     function showPosition(position) {
-        L.marker([position.coords.latitude, position.coords.longitude], {title: "Olet tässä"}).addTo(map)
+        new L.Marker([position.coords.latitude, position.coords.longitude], {title: "Olet tässä"}).addTo(map)
         map.setView([position.coords.latitude, position.coords.longitude], 16)
     }
 
