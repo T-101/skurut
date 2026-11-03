@@ -73,24 +73,24 @@ if (navigator.geolocation) {
 }
 
 function addTramButtons() {
-    function intSort(a, b) {
-        return parseInt(a) - parseInt(b)
+    function lineSort(a, b) {
+        return String(a).localeCompare(String(b), 'fi', {numeric: true})
     }
 
     const filterContent = document.querySelector("#filter")
+    const selectedLines = new Set(Array.from(filterContent.querySelectorAll('.tgl:checked'))
+        .map(input => input.value))
     filterContent.innerHTML = ""
-    Array.from(tramSet).sort(intSort).forEach(line => {
+    Array.from(tramSet).sort(lineSort).forEach(line => {
         const clone = document.getElementById('tram-button').content.cloneNode(true)
         const input = clone.querySelector('input')
         const label = clone.querySelector('label')
         input.value = line
         input.id = `cb3-${line}`
+        input.checked = selectedLines.has(String(line))
+        input.addEventListener('change', updateFilters)
         label.setAttribute('for', `cb3-${line}`)
         label.textContent = line
         filterContent.appendChild(clone)
     })
 }
-
-document.querySelectorAll('.tgl').forEach(input => {
-    input.addEventListener('change', updateFilters)
-})
